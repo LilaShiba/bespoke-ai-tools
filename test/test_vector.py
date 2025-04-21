@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from vectorstats.core import Vector  # Adjust the import path as needed
+from src.core import Vector  # Adjust the import path as needed
 
 class TestVector(unittest.TestCase):
 
