@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "vector-analysis"  # This should match the package folder name
+version = "0.1.0"
+description = "Vector analysis package"
+authors = ["Lila James <lilaresearch@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.21"
+matplotlib = "^3.4"
+pandas = "^1.3"
+
+[build-system]
+requires = ["setuptools", "wheel", "flit"]
+build-backend = "setuptools.build_meta"
