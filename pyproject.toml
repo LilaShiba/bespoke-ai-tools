@@ -5,7 +5,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "vector-analysis"  # Replace with your project name
+name = "Sp00kyVectors"  # Replace with your project name
 version = "0.1.0"         # Replace with your project version
 
 [tool.setuptools.packages.find]
