@@ -1,13 +1,23 @@
-
-
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "Sp00kyVectors"  # Replace with your project name
-version = "0.1.0"         # Replace with your project version
+[tool.poetry]
+name = "Sp00kyVectors" 
+version = "0.1.0"      
+description = "A spooky vector analysis library"
+authors = ["Lila James <lilaresearch@gmail.com>"]  
+license = "MIT"  
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+numpy = "^1.23.0"  # Adjust based on your package requirements
+pandas = "<=2.2.3"
+matplotlib = "3.10.1"
+scikit-learn = "1.6.1"
+scipy = "1.15.2"
+pytest = "^8.3.5"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["dev", "vectorstats"]
+include = ["sp00kyvectors"]  # Ensure this is your renamed folder

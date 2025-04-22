@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
-from vectorstats.core import Vector
 from unittest.mock import patch
+from sp00kyvectors.core import Vector
 
 class TestVectorPlots(unittest.TestCase):
     def setUp(self):

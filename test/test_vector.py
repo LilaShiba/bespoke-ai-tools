@@ -1,7 +1,6 @@
 import unittest
 import numpy as np
-from vectorstats.core import Vector  # Adjust the import path as needed
-
+from sp00kyvectors.core import Vector
 class TestVector(unittest.TestCase):
 
     def setUp(self):
