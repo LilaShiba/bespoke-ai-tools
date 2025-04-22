@@ -8,7 +8,7 @@ Whether you're analyzing ghost sightings over time or just need a clean linear r
 
 ## 🧠 Features
 
-- 📅 **Temporal Vectors**: Handle 1D data with timestamps for spectral precision.
+- 📅 **Temporal Vectors**: Handle data with timestamps for spectral precision.
 - 📊 **Statistics**:
   - Pearson correlation 🧬
   - Z-score standardization & normalization 🧼
