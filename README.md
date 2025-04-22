@@ -1,18 +1,39 @@
-# Vector Analysis
+# 🎃 Sp00kyVectors: Haunted Vector Analysis for the Living and the Dead 📈💀
 
-This package provides statistical analysis, data visualization, and machine learning functionalities using vectors. The `Vector` class offers methods for common statistical operations, linear regression, Pearson correlation, data normalization, and various visualizations like histograms and plots.
+Welcome to **Sp00kyVectors**, the eerily intuitive Python library for **statistical analysis**, **machine learning**, and **data visualization** — all based on vector magic! 🪄
 
-## Features
+Whether you're analyzing ghost sightings over time or just need a clean linear regression, this package has you covered.
 
-- **Data Handling**: Handle 1D data points with associated dates.
-- **Statistical Methods**: Compute Pearson correlation, normalize, standardize, and calculate aligned entropy between vectors.
-- **Visualization**: Linear regression plot, histograms, rolling averages, and log-binned distributions.
-- **Machine Learning**: K-nearest neighbors classification (KNN).
-- **Data Saving and Loading**: Save and load vectors to/from JSON files.
+---
 
-## Installation
+## 🧠 Features
 
-You can install the package using `poetry`:
+- 📅 **Temporal Vectors**: Handle 1D data with timestamps for spectral precision.
+- 📊 **Statistics**:
+  - Pearson correlation 🧬
+  - Z-score standardization & normalization 🧼
+  - Rolling entropy 🌀 and spectral analysis
+- 🔮 **Visualizations**:
+  - Regression plots 📈
+  - Rolling averages 📉
+  - Histograms and log-binned distributions 🎛️
+- 🤖 **Machine Learning**:
+  - K-Nearest Neighbors (KNN) for ghostly classification 👻
+- 📦 **Storage**:
+  - Save & load vectors to/from JSON 🗃️
+
+---
+
+## 🧪 Installation
+
+Install with `poetry`:
 
 ```bash
-poetry install
+poetry add sp00kyvectors
+```
+
+or the tried and true
+
+```bash
+pip install sp00kyvectors
+```
