@@ -1,37 +1,6 @@
 import pandas as pd
 from sp00kyvectors.core import Vector
 
-class DataFrames(Vector):
-    '''
-    Vector stats for pandas DataFrames.
-    Inherits from Vector and extends it for DataFrame use.
-    '''
-    def __init__(self, df: pd.DataFrame):
-        super().__init__()
-        self.df = df
-
-    pass
-
- 
-def drop_outliers_iqr(self,col: str) -> pd.DataFrame:
-    """
-    Remove outliers from a DataFrame column using the IQR method.
-    
-    Args:
-        df (pd.DataFrame): The input DataFrame.
-        col (str): The column name to check for outliers.
-        
-    Returns:
-        pd.DataFrame: A new DataFrame with outliers removed for that column.
-    """
-    df = self.df 
-    Q1 = df[col].quantile(0.25)
-    Q3 = df[col].quantile(0.75)
-    IQR = Q3 - Q1
-    lower_bound = Q1 - 1.5 * IQR
-    upper_bound = Q3 + 1.5 * IQR
-    return df[(df[col] >= lower_bound) & (df[col] <= upper_bound)]
-
 import pandas as pd
 from sp00kyvectors.core import Vector
 
@@ -86,3 +55,23 @@ class DataFrames(Vector):
     def get_clean_df(self):
         '''Return cleaned DataFrame'''
         return self.df
+    
+    def drop_outliers_iqr(self,col: str) -> pd.DataFrame:
+        """
+        Remove outliers from a DataFrame column using the IQR method.
+        
+        Args:
+            df (pd.DataFrame): The input DataFrame.
+            col (str): The column name to check for outliers.
+            
+        Returns:
+            pd.DataFrame: A new DataFrame with outliers removed for that column.
+        """
+        df = self.df 
+        Q1 = df[col].quantile(0.25)
+        Q3 = df[col].quantile(0.75)
+        IQR = Q3 - Q1
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+        return df[(df[col] >= lower_bound) & (df[col] <= upper_bound)]
+
