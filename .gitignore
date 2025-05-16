@@ -75,3 +75,6 @@ test-results/
 
 # MacOS
 .DS_Store
+
+# Data
+data/
