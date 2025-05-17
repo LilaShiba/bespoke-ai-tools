@@ -6,6 +6,15 @@ Whether you’re chasing spectral patterns or just need basic stats with dramati
 
 ---
 
+## 🧼 Cleaning Example
+
+| Before | After |
+|--------|-------|
+| ![Before Cleaning](imgs/temp_before_clean.png) | ![After Cleaning](imgs/temp_after_clean.png) |
+| ![Before Bin](imgs/beforebin.png) | ![After Cleaning](imgs/afterbin.png) |
+
+
+
 ## 🧠 Features
 
 - 🧮 **Vector Magic**:
