@@ -3,21 +3,24 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "Sp00kyVectors" 
-version = "0.1.2"      
+name = "Sp00kyVectors"
+version = "0.1.2"
 description = "A spooky vector analysis library"
-authors = ["Lila James <lilaresearch@gmail.com>"]  
-license = "MIT"  
+authors = ["Lila James <lilaresearch@gmail.com>"]
+license = "MIT"
+readme = "README.md"  # ✅ Ensures README renders on PyPI
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-numpy = "^1.23.0"  # Adjust based on your package requirements
+numpy = "^1.23.0"
 pandas = "<=2.2.3"
 matplotlib = "3.10.1"
 scikit-learn = "1.6.1"
 scipy = "1.15.2"
+
+[tool.poetry.dev-dependencies]
 pytest = "^8.3.5"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["sp00kyvectors"]  # Ensure this is your renamed folder
+include = ["sp00kyvectors"]  # ✅ Only needed if you plan to use setuptools too (not needed for pure Poetry)
