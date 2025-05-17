@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "Sp00kyVectors" 
-version = "0.1.0"      
+version = "0.1.1"      
 description = "A spooky vector analysis library"
 authors = ["Lila James <lilaresearch@gmail.com>"]  
 license = "MIT"  
