@@ -10,8 +10,10 @@ Whether you’re chasing spectral patterns or just need basic stats with dramati
 
 | Before | After |
 |--------|-------|
-| ![Before Cleaning](https://github.com/LilaShiba/sp00kyvectors/blob/main/imgs/temp_before_clean.png?raw=true) | ![After Cleaning](https://github.com/LilaShiba/sp00kyvectors/blob/main/imgs/temp_after_clean.png?raw=true) |
-| ![Before Bin](https://github.com/LilaShiba/sp00kyvectors/blob/main/imgs/beforebin.png?raw=true) | ![After Cleaning](https://github.com/LilaShiba/sp00kyvectors/blob/main/imgs/afterbin.png?raw=true) |
+| ![Before Cleaning](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/temp_before_clean.png) | ![After Cleaning](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/temp_after_clean.png) |
+| ![Before Bin](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/beforebin.png) | ![After Bin](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/afterbin.png) |
+| ![Vector Projections](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output_add.png) | ![Normalize](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output.png) |
+
 
 
 

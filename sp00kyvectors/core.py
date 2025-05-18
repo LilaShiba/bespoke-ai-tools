@@ -4,6 +4,10 @@ from typing import *
 import collections
 import pandas as pd
 from scipy import stats
+import glob 
+import os
+from tqdm import tqdm
+from pathlib import Path
 
 class Vector:
     '''Vector Maths Class for statistical analysis and visualization.'''
@@ -31,7 +35,7 @@ class Vector:
                 self.y = data[:, 1]
             else:
                 self.x = data
-                self.y = None
+                self.y = np.array([x for x in range(len(self.x))])
         else:
             self.v = None
             self.n = 0
@@ -178,8 +182,8 @@ class Vector:
 
     @staticmethod
     def set_operations(v1: 'Vector', v2: 'Vector') -> Tuple[Set[float], Set[float], float]:
-        s1 = set(v1.x or [])
-        s2 = set(v2.y if v2.y is not None else (v2.x or []))
+        s1 = set(v1.x)
+        s2 = set(v2.x)
         union = s1.union(s2)
         inter = s1.intersection(s2)
         j = len(inter) / len(union) if union else 0.0
@@ -254,3 +258,98 @@ class Vector:
 
     def __repr__(self):
         return f"<Vector '{self.label}' (n={self.n})>"
+
+    
+
+    @staticmethod
+    def plot_vector_op(v1, v2=None, op: str = "add", scale: str = "unit") -> None:
+        """
+        Plot 2D linear‑algebra ops on Vector instances.
+
+        Parameters
+        ----------
+        v1 : Vector
+            First Vector (must have .x and .y)
+        v2 : Vector, optional
+            Second Vector for binary ops
+        op : str
+            One of: 'plot', 'add', 'subtract', 'dot', 'cross',
+            'normalize', 'project'
+        scale : str
+            'unit' for unit vector normalization, '01' for [0,1] scaling
+        """
+
+        def clean_and_scale(x, y):
+            arr = np.stack([x, y], axis=1)
+            arr = arr[~np.isnan(arr).any(axis=1)]
+
+            # Drop extreme outliers using z-score
+            z = np.abs((arr - arr.mean(axis=0)) / arr.std(axis=0))
+            arr = arr[(z < 3).all(axis=1)]
+
+            # Scale
+            if scale == "01":
+                min_vals = arr.min(axis=0)
+                max_vals = arr.max(axis=0)
+                arr = (arr - min_vals) / (max_vals - min_vals)
+            elif scale == "unit":
+                norm = np.linalg.norm(arr, axis=1, keepdims=True)
+                norm[norm == 0] = 1
+                arr = arr / norm
+
+            return np.mean(arr, axis=0)
+
+        u = clean_and_scale(v1.x, v1.y)
+        w = clean_and_scale(v2.x, v2.y) if v2 else None
+
+        # --- handle ops ---
+        if op == "plot":
+            results = []
+        elif op == "add":
+            results = [u + w]
+        elif op == "subtract":
+            results = [u - w]
+        elif op == "dot":
+            print(f"Dot({v1.label},{v2.label}) =", float(np.dot(u, w)))
+            return
+        elif op == "cross":
+            z = u[0] * w[1] - u[1] * w[0]
+            print(f"Cross({v1.label},{v2.label}) =", z)
+            return
+        elif op == "normalize":
+            norm = np.linalg.norm(u)
+            results = [u / norm]
+        elif op == "project":
+            proj = (np.dot(u, w) / np.dot(w, w)) * w
+            results = [proj]
+        else:
+            raise ValueError(f"Unknown op {op!r}")
+
+        # --- plotting ---
+        plt.figure(figsize=(5, 5))
+        ax = plt.gca()
+        ax.axhline(0, color='gray', lw=1)
+        ax.axvline(0, color='gray', lw=1)
+        ax.set_aspect('equal', 'box')
+        ax.quiver(0, 0, *u, angles='xy', scale_units='xy', scale=1, label=v1.label, color='pink')
+        if w is not None:
+            ax.quiver(0, 0, *w, angles='xy', scale_units='xy', scale=1, label=v2.label, color='blue')
+        for r in results:
+            ax.quiver(0, 0, *r, angles='xy', scale_units='xy', scale=1, label=f"{op} result")
+        ax.legend()
+        ax.grid(True)
+        plt.title(f"{op.capitalize()} of {v1.label}" + (f" & {v2.label}" if v2 else ""))
+        plt.show()
+
+    @staticmethod
+    def load_folder(path):
+        folder_path = Path("/Users/lila/data_viz/data")
+        all_files = glob.glob(os.path.join(folder_path, "*.csv"))
+        all_dfs = []
+        # Append the rest of the CSVs without headers
+        for file in tqdm(all_files, desc="✨💖 Loading CSVs ✨💖"):
+            df = pd.read_csv(file)
+            all_dfs.append(df)
+
+        combined_df = pd.concat(all_dfs, ignore_index=True)
+        return combined_df
