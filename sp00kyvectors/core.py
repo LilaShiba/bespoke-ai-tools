@@ -136,7 +136,7 @@ class Vector:
         return mn, mx
 
     def get_prob_vector(self, axis: int = 0, rounding: int = None) -> Dict[float, float]:
-        vec = self.y if axis==1 and self.y is not None else self.x
+        vec = self.x
         if vec is None:
             raise ValueError("No data available for probability vector.")
         if rounding is not None:
@@ -145,7 +145,7 @@ class Vector:
         return dict(zip(vals, cnts / len(vec)))
 
     def plot_pdf(self, bins: Union[int, str] = 'auto'):
-        data = self.y if self.y is not None else self.x
+        data = self.x
         if data is None:
             raise ValueError("No data for PDF plot.")
         plt.hist(data, bins=bins, density=True, alpha=0.5, label='PDF')
@@ -154,7 +154,7 @@ class Vector:
         plt.legend(); plt.grid(True); plt.show()
 
     def plot_basic_stats(self):
-        data = self.y if self.y is not None else self.x
+        data = self.x
         if data is None:
             raise ValueError("No data available.")
         m, s = np.mean(data), np.std(data)
@@ -165,7 +165,7 @@ class Vector:
         plt.legend(); plt.grid(True); plt.show()
 
     def rolling_average(self, window_size: int = 3) -> np.ndarray:
-        data = self.y if self.y is not None else self.x
+        data = self.x
         if data is None or window_size > len(data):
             raise ValueError("Insufficient data for rolling average.")
         csum = np.cumsum(np.insert(data, 0, 0))
