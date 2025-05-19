@@ -1,10 +1,10 @@
 import pandas as pd
 from sp00kyvectors.core import Vector
-
+from collections import defaultdict
 import pandas as pd
-from sp00kyvectors.core import Vector
+from utils.core import Vector
 
-class DataFrames(Vector):
+class SpookyDF(Vector):
     '''
     Vector stats and cleaning for pandas DataFrames.
     '''
@@ -13,6 +13,7 @@ class DataFrames(Vector):
             raise TypeError("Expected a pandas DataFrame.")
         super().__init__()
         self.df = df
+        self.vectors = defaultdict()
 
     def drop_nulls(self, threshold=0.5):
         '''Drop columns with more than threshold proportion of nulls'''
@@ -54,6 +55,10 @@ class DataFrames(Vector):
 
     def get_clean_df(self):
         '''Return cleaned DataFrame'''
+        self.remove_duplicates()
+        self.drop_nulls()
+        self.clip_outliers()
+        self.standardize_column_names()
         return self.df
     
     def drop_outliers_iqr(self,col: str) -> pd.DataFrame:
@@ -75,3 +80,13 @@ class DataFrames(Vector):
         upper_bound = Q3 + 1.5 * IQR
         return df[(df[col] >= lower_bound) & (df[col] <= upper_bound)]
 
+
+    def load_cols_into_vectors(self):
+        df = self.get_clean_df()
+        for col in range(len(df.columns)):
+            df_column_name = df.columns[col]
+            self.vectors[df_column_name] = Vector(
+                label=df_column_name,
+                data_points = df[df_column_name]
+            )
+        return self.vectors
