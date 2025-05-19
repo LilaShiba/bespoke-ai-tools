@@ -47,10 +47,9 @@ class Vector:
         if self.x is None:
             return
 
-        if self.y is not None:
-            mask = ~(np.isnan(self.x) | np.isnan(self.y))
-        else:
-            mask = ~np.isnan(self.x)
+       
+        mask = ~(np.isnan(self.x) | np.isnan(self.y))
+       
 
         self.x = self.x[mask]
         if self.y is not None:
@@ -200,11 +199,19 @@ class Vector:
             raise ValueError("No data for transformation.")
         P = np.outer(projection_vector, projection_vector)
         return np.dot(self.x, P)
+    
+    @staticmethod
+    def normalize(arr1: np.ndarray, arr2: np.ndarray) -> np.ndarray:
+        data = np.concatenate([arr1, arr2])
+        mask = ~(np.isnan(data))
+        data = data[mask]
+        min_val = np.min(data)
+        max_val = np.max(data)
+        normalized_data = (data - min_val) / (max_val - min_val)
+        return normalized_data
 
-    def normalize(self) -> np.ndarray:
-        if self.x is None:
-            raise ValueError("No data to normalize.")
-        return (self.x - np.mean(self.x)) / np.std(self.x)
+
+
 
     def calculate_distance(self, other_vector: 'Vector') -> float:
         if self.x is None or other_vector.x is None:
@@ -228,7 +235,7 @@ class Vector:
     def add(self, other: 'Vector') -> 'Vector':
         if self.x is None or other.x is None:
             raise ValueError("Missing data for addition.")
-        return Vector(label=f'{self.label}+{other.label}', data_points=self.x + other.x)
+        return Vector(label=f'{self.label}+{other.label}', data_points=[self.x + other.x])
 
     def subtract(self, other: 'Vector') -> 'Vector':
         if self.x is None or other.x is None:
