@@ -13,6 +13,8 @@ class SpookyDF(Vector):
             raise TypeError("Expected a pandas DataFrame.")
         super().__init__()
         self.df = df
+        self.time = df['Timestamp']
+        self.df = self.df.drop(axis=1, labels='Timestamp')
         self.vectors = defaultdict()
 
     def drop_nulls(self, threshold=0.5):
@@ -56,7 +58,8 @@ class SpookyDF(Vector):
     def get_clean_df(self):
         '''Return cleaned DataFrame'''
         self.remove_duplicates()
-        self.drop_nulls()
+        #self.drop_nulls()
+        self.remove_duplicates()
         self.clip_outliers()
         self.standardize_column_names()
         return self.df

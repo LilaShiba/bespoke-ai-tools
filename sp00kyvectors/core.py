@@ -8,6 +8,7 @@ import glob
 import os
 from tqdm import tqdm
 from pathlib import Path
+import warnings
 
 class Vector:
     '''Vector Maths Class for statistical analysis and visualization.'''
@@ -348,15 +349,37 @@ class Vector:
         plt.title(f"{op.capitalize()} of {v1.label}" + (f" & {v2.label}" if v2 else ""))
         plt.show()
 
+
     @staticmethod
     def load_folder(path):
-        folder_path = Path("/Users/lila/data_viz/data")
-        all_files = glob.glob(os.path.join(folder_path, "*.csv"))
-        all_dfs = []
-        # Append the rest of the CSVs without headers
-        for file in tqdm(all_files, desc="✨💖 Loading CSVs ✨💖"):
-            df = pd.read_csv(file)
-            all_dfs.append(df)
+        """
+        Load all CSVs in the given folder, align columns by name (union of all headers),
+        drop stray index columns or repeated header rows, and return one combined DataFrame.
+        """
+        folder_path = Path(path)
+        csv_paths = glob.glob(str(folder_path / "*.csv"))
+        if not csv_paths:
+            return pd.DataFrame()
 
-        combined_df = pd.concat(all_dfs, ignore_index=True)
-        return combined_df
+        # 1) Build the full set of columns
+        all_cols = set()
+        for fp in tqdm(csv_paths, desc="🔍 Gathering columns"):
+            tmp = pd.read_csv(fp, nrows=0, index_col=False)
+            tmp = tmp.loc[:, ~tmp.columns.str.contains(r'^Unnamed')]                     # drop stray unnamed cols
+            all_cols.update(tmp.columns.tolist())
+        all_cols = sorted(all_cols)
+
+        # 2) Read, clean, align each file
+        dfs = []
+        for fp in tqdm(csv_paths, desc="📥 Reading & aligning"):
+            df = pd.read_csv(fp, index_col=False)                                        # no inferred index
+            df = df.loc[:, ~df.columns.str.contains(r'^Unnamed')]                         # drop unnamed cols
+            df = df[[col for col in df.columns                                         
+                    if not (df[col].astype(str) == col).all()]]                         # drop repeated header rows
+            df = df.reindex(columns=all_cols)                                             # align + fill NaN
+            dfs.append(df)
+
+        # 3) Concatenate everything
+        combined = pd.concat(dfs, ignore_index=True, sort=False)
+        return combined
+

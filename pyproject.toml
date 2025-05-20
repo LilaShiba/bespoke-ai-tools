@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "Sp00kyVectors"
-version = "0.1.6"
+version = "0.1.7"
 description = "A spooky vector analysis library"
 authors = ["Lila James <lilaresearch@gmail.com>"]
 license = "MIT"
