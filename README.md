@@ -6,7 +6,7 @@ Whether you’re chasing spectral patterns or just need basic stats with dramati
 
 ---
 
-## 🧼 Cleaning Example
+## 🧼 Examples
 
 | Before | After |
 |--------|-------|
@@ -14,9 +14,18 @@ Whether you’re chasing spectral patterns or just need basic stats with dramati
 | ![Before Bin](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/beforebin.png) | ![After Bin](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/afterbin.png) |
 | ![Vector Projections](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output_add.png) | ![Normalize](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output.png) |
 
+## 🧹 Dirty Data? No Problem!
+
+Easily load and align mismatched CSV files. This utility intelligently collects, normalizes, and organizes messy datasets — so you can focus on the analysis, not the cleanup. 🚀
+
+This function ```python Vector.load_folder ``` loads a folder of CSV files with potentially mismatched or missing columns,  
+aligns all columns based on their headers, and combines them into a single clean DataFrame.  
+Missing columns in any file are automatically filled with `NaN` values to maintain consistency.
+
+Perfect for messy datasets where CSVs don't share the exact same structure!
 
 
-
+# 🎛️⚙️✨ Granular Control? No Problem!
 ## 🧠 Features
 
 - 🧮 **Vector Magic**:
@@ -308,3 +317,8 @@ MIT — you’re free to haunt this code as you wish as long as money is never i
 ---
 
 ✨ Stay spooky, and may your vectors always point toward the unknown. 🕸️
+
+# Student Opportunities 🎓💻
+
+Learning to code, using GitHub, or just curious? Reach out and join the team!  
+We’re currently looking for volunteers of all skill levels. Everyone’s welcome!
