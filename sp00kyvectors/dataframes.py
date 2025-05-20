@@ -2,7 +2,8 @@ import pandas as pd
 from sp00kyvectors.core import Vector
 from collections import defaultdict
 import pandas as pd
-from utils.core import Vector
+from typing import *
+
 
 class SpookyDF(Vector):
     '''
@@ -83,7 +84,6 @@ class SpookyDF(Vector):
         upper_bound = Q3 + 1.5 * IQR
         return df[(df[col] >= lower_bound) & (df[col] <= upper_bound)]
 
-
     def load_cols_into_vectors(self):
         df = self.get_clean_df()
         for col in range(len(df.columns)):
@@ -93,3 +93,4 @@ class SpookyDF(Vector):
                 data_points = df[df_column_name]
             )
         return self.vectors
+    

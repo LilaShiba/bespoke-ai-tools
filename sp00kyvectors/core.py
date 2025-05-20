@@ -9,6 +9,7 @@ import os
 from tqdm import tqdm
 from pathlib import Path
 import warnings
+from typing import *
 
 class Vector:
     '''Vector Maths Class for statistical analysis and visualization.'''
@@ -212,8 +213,6 @@ class Vector:
         return normalized_data
 
 
-
-
     def calculate_distance(self, other_vector: 'Vector') -> float:
         if self.x is None or other_vector.x is None:
             raise ValueError("Missing data for distance calculation.")
@@ -267,7 +266,6 @@ class Vector:
     def __repr__(self):
         return f"<Vector '{self.label}' (n={self.n})>"
 
-    
 
     @staticmethod
     def plot_vector_op(v1, v2=None, op: str = "add", scale: str = "unit") -> None:
@@ -361,6 +359,7 @@ class Vector:
         if not csv_paths:
             return pd.DataFrame()
 
+        warnings.filterwarnings("ignore", category=pd.errors.ParserWarning)
         # 1) Build the full set of columns
         all_cols = set()
         for fp in tqdm(csv_paths, desc="🔍 Gathering columns"):
