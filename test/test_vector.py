@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 from typing import *
 from typing import Set
-from core import Vector
+from sp00kyvectors.core import Vector
 class TestVector(unittest.TestCase):
 
     def setUp(self):
