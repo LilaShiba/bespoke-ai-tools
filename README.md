@@ -1,8 +1,8 @@
-# 🎃 Sp00kyVectors: Haunted Vector Analysis for the Living and the Dead 📈💀
+# 🎃 Sp00kyVectors: Vector Analysis wrapper for Python
 
-Welcome to **Sp00kyVectors**, the eerily intuitive Python class for **vector analysis**, **statistical computation**, and **sinister visualizations** — all coded to thrill and analyze! 🪄👻
+Welcome to **Sp00kyVectors**, the eerily intuitive Python class for **vector analysis**, **statistical computation**, and **visualizations** 🪄👻
 
-Whether you’re chasing spectral patterns or just need basic stats with dramatic flair, this library’s got your back (from beyond).
+Whether you’re chasing spectral patterns or just need stats from dirty data, this library’s got your back (from beyond).
 
 ---
 
@@ -86,7 +86,7 @@ pip install sp00kyvectors
 Or summon it from your own local clone:
 
 <pre><code>
-git clone https://github.com/yourname/sp00kyvectors.git
+git clone https://github.com/LilaShiba/sp00kyvectors.git
 cd sp00kyvectors
 pip install .
 </code></pre>
