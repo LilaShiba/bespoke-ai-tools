@@ -1,8 +1,8 @@
-# 🎃 Sp00kyVectors: Haunted Vector Analysis for the Living and the Dead 📈💀
+# 🎃 Sp00kyVectors: Vector Analysis wrapper for Python
 
-Welcome to **Sp00kyVectors**, the eerily intuitive Python class for **vector analysis**, **statistical computation**, and **sinister visualizations** — all coded to thrill and analyze! 🪄👻
+Welcome to **Sp00kyVectors**, the eerily intuitive Python class for **vector analysis**, **statistical computation**, and **visualizations** 🪄👻
 
-Whether you’re chasing spectral patterns or just need basic stats with dramatic flair, this library’s got your back (from beyond).
+Whether you’re chasing spectral patterns or just need stats from dirty data, this library’s got your back (from beyond).
 
 ---
 
@@ -15,14 +15,25 @@ Whether you’re chasing spectral patterns or just need basic stats with dramati
 | ![Vector Projections](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output_add.png) | ![Normalize](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output.png) |
 
 ## 🧹 Dirty Data? No Problem!
-
+#### Load without worry
 Easily load and align mismatched CSV files. This utility intelligently collects, normalizes, and organizes messy datasets — so you can focus on the analysis, not the cleanup. 🚀
 
-This function ```python Vector.load_folder ``` loads a folder of CSV files with potentially mismatched or missing columns,  
+``` Vector.load_folder(path) ``` loads a folder of CSV files with potentially mismatched or missing columns,  
 aligns all columns based on their headers, and combines them into a single clean DataFrame.  
 Missing columns in any file are automatically filled with `NaN` values to maintain consistency.
 
 Perfect for messy datasets where CSVs don't share the exact same structure!
+
+Cleaning is done one layer up with `sp00kyDF.get_clean_df()` ✨🧹
+
+This method returns a cleaned version of the DataFrame by performing the following steps:
+
+1. 🧩 Removes duplicate rows (performed twice to ensure thorough cleaning)  
+2. 🚫📊 Clips outlier values based on the Z-score method *(an Interquartile Range (IQR) method is also available)*  
+3. 🏷️ Standardizes column names for consistency  
+4. ❌🕳️ *(Optionally drops null values — currently commented out)*
+
+Finally, it returns the cleaned DataFrame ready for analysis. 🎯
 
 
 # 🎛️⚙️✨ Granular Control? No Problem!
@@ -75,7 +86,7 @@ pip install sp00kyvectors
 Or summon it from your own local clone:
 
 <pre><code>
-git clone https://github.com/yourname/sp00kyvectors.git
+git clone https://github.com/LilaShiba/sp00kyvectors.git
 cd sp00kyvectors
 pip install .
 </code></pre>
