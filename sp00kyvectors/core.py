@@ -245,7 +245,8 @@ class Vector:
     def add(self, other: 'Vector') -> 'Vector':
         if self.x is None or other.x is None:
             raise ValueError("Missing data for addition.")
-        return Vector(label=f'{self.label}+{other.label}', data_points=[np.add(self.x, other.x)])
+        v3 = np.add(self.x, other.x)
+        return Vector(label=f'{self.label}+{other.label}', data_points=v3)
 
     def subtract(self, other: 'Vector') -> 'Vector':
         if self.x is None or other.x is None:
