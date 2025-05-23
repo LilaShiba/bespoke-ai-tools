@@ -7,7 +7,6 @@ certifi==2025.4.26
 cffi==1.17.1
 charset-normalizer==3.4.2
 cleo==2.1.0
--e git+https://github.com/LilaShiba/python_packages.git@96f4e0693009635d994b2b1dd158969843b0f6d8#egg=cli_tools
 comm==0.2.2
 contourpy==1.1.1
 crashtest==0.4.1
