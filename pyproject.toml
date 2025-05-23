@@ -9,7 +9,7 @@ description = "A spooky vector analysis library"
 authors = ["Lila James <lilaresearch@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-
+packages = [{ include = "sp00kyvectors" }]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
@@ -83,12 +83,10 @@ tzdata = "2025.2"
 urllib3 = "2.4.0"
 wcwidth = "0.2.13"
 
-[tool.poetry.dev-dependencies]
+# Optional: Local or editable dependencies
+# sp00kyvectors-howto = { path = "../data_viz", develop = true }
+
+[tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
 ipython = "8.12.3"
 jupyter = "*"
-
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["sp00kyvectors"]
-
