@@ -10,6 +10,7 @@ from tqdm import tqdm
 from pathlib import Path
 import warnings
 from typing import *
+from typing import Set 
 
 class Vector:
     '''Vector Maths Class for statistical analysis and visualization.'''
@@ -203,7 +204,7 @@ class Vector:
         return np.dot(self.x, P)
     
     @staticmethod
-    def normalize(arr1: np.ndarray, arr2: np.ndarray) -> np.ndarray:
+    def normalize_min_max(arr1: np.ndarray, arr2: np.ndarray) -> np.ndarray:
         data = np.concatenate([arr1, arr2])
         mask = ~(np.isnan(data))
         data = data[mask]
@@ -211,7 +212,16 @@ class Vector:
         max_val = np.max(data)
         normalized_data = (data - min_val) / (max_val - min_val)
         return normalized_data
-
+    
+    @staticmethod
+    def normalize(arr1: np.ndarray, arr2: np.ndarray) -> np.ndarray:
+        data = np.concatenate([arr1, arr2])
+        mask = ~(np.isnan(data))
+        data = data[mask]
+        mean = np.mean(data)
+        std = np.std(data)
+        normalized_data = (data - mean) /std
+        return normalized_data
 
     def calculate_distance(self, other_vector: 'Vector') -> float:
         if self.x is None or other_vector.x is None:
@@ -235,7 +245,7 @@ class Vector:
     def add(self, other: 'Vector') -> 'Vector':
         if self.x is None or other.x is None:
             raise ValueError("Missing data for addition.")
-        return Vector(label=f'{self.label}+{other.label}', data_points=[self.x + other.x])
+        return Vector(label=f'{self.label}+{other.label}', data_points=[np.add(self.x, other.x)])
 
     def subtract(self, other: 'Vector') -> 'Vector':
         if self.x is None or other.x is None:
