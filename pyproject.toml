@@ -8,19 +8,30 @@ version = "0.1.8"
 description = "A spooky vector analysis library"
 authors = ["Lila James <lilaresearch@gmail.com>"]
 license = "MIT"
-readme = "README.md"  # ✅ Ensures README renders on PyPI
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-numpy = "^1.23.0"
-pandas = "<=2.2.3"
-matplotlib = "3.10.1"
+numpy = "^1.24.4"
+pandas = "2.0.3"
+matplotlib = "3.7.5"  # You had 3.10.1, but 3.7.5 is a valid pinned version from your list
 scikit-learn = "1.6.1"
 scipy = "1.15.2"
+python-dotenv = "1.0.1"
+requests = "2.32.3"
+pillow = "10.4.0"
+pyparsing = "3.1.4"
+rapidfuzz = "3.9.7"
+
+# Editable Git dependency
+cli_tools = { git = "https://github.com/LilaShiba/python_packages.git", rev = "96f4e0693009635d994b2b1dd158969843b0f6d8" }
 
 [tool.poetry.dev-dependencies]
 pytest = "^8.3.5"
+ipython = "8.12.3"
+jupyter = "*"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["sp00kyvectors"]  # ✅ Only needed if you plan to use setuptools too (not needed for pure Poetry)
+include = ["sp00kyvectors"]
+
