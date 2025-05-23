@@ -10,7 +10,7 @@ class Sp00kyUtils():
     def __init__(self, lable):
         self.lable = lable 
     # 1. General Utilities
-    def safe_load_csv(filepath: str) -> pd.DataFrame:
+    def safe_load_csv(self, filepath: str) -> pd.DataFrame:
         """
         Safely load a CSV file into a pandas DataFrame.
         
@@ -24,7 +24,7 @@ class Sp00kyUtils():
             return pd.read_csv(filepath)
         raise FileNotFoundError(f"File not found: {filepath}")
 
-    def remove_nans(data: List[float]) -> List[float]:
+    def remove_nans(self, data: List[float]) -> List[float]:
         """
         Removes NaN values from a list.
         
@@ -36,7 +36,7 @@ class Sp00kyUtils():
         """
         return [x for x in data if not np.isnan(x)]
 
-    def normalize_array(arr: np.ndarray) -> np.ndarray:
+    def normalize_array(self, arr: np.ndarray) -> np.ndarray:
         """
         Normalize a numpy array to a range [0, 1].
         
@@ -48,7 +48,7 @@ class Sp00kyUtils():
         """
         return (arr - np.min(arr)) / (np.max(arr) - np.min(arr))
 
-    def standardize_array(arr: np.ndarray) -> np.ndarray:
+    def standardize_array(self, arr: np.ndarray) -> np.ndarray:
         """
         Standardize a numpy array (zero mean, unit variance).
         
@@ -61,7 +61,7 @@ class Sp00kyUtils():
         return (arr - np.mean(arr)) / np.std(arr)
 
     # 2. Plotting Helpers
-    def show_plot(title: str = "", xlabel: str = "", ylabel: str = ""):
+    def show_plot(self, title: str = "", xlabel: str = "", ylabel: str = ""):
         """
         Display a plot with customizable title, x and y labels.
         
@@ -78,7 +78,7 @@ class Sp00kyUtils():
         plt.show()
 
     # 3. Statistical Tools
-    def kl_divergence(p: np.ndarray, q: np.ndarray) -> float:
+    def kl_divergence(self, p: np.ndarray, q: np.ndarray) -> float:
         """
         Calculate the Kullback-Leibler (KL) divergence between two probability distributions.
         
@@ -93,7 +93,7 @@ class Sp00kyUtils():
         q = q[q > 0]
         return np.sum(p * np.log(p / q))
 
-    def entropy(p: np.ndarray) -> float:
+    def entropy(self, p: np.ndarray) -> float:
         """
         Calculate the entropy of a probability distribution.
         
@@ -107,7 +107,7 @@ class Sp00kyUtils():
         return -np.sum(p * np.log2(p))
 
     # 4. Distance Functions (for custom k-NN or clustering)
-    def euclidean_distance(a: np.ndarray, b: np.ndarray) -> float:
+    def euclidean_distance(self, a: np.ndarray, b: np.ndarray) -> float:
         """
         Calculate the Euclidean distance between two vectors.
         
