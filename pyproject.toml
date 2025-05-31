@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "Sp00kyVectors"
-version = "0.1.12"
+version = "0.1.13"
 description = "A spooky vector analysis library"
 authors = ["Lila James <lilaresearch@gmail.com>"]
 license = "MIT"
@@ -48,6 +48,7 @@ more-itertools = "10.7.0"
 nest-asyncio = "1.6.0"
 nh3 = "0.2.21"
 numpy = "1.26.4"
+opencv-python = "^4.9.0.80"
 packaging = "25.0"
 pandas = "2.2.3"
 parso = "0.8.4"
@@ -82,6 +83,7 @@ twine = "6.1.0"
 tzdata = "2025.2"
 urllib3 = "2.4.0"
 wcwidth = "0.2.13"
+torch = "^2.3.0"
 
 # Optional: Local or editable dependencies
 # sp00kyvectors-howto = { path = "../data_viz", develop = true }

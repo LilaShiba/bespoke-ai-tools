@@ -1,12 +1,13 @@
 import os
 import torch
-from  cnn import Convoultion_NN  
+from  sp00kyvectors.cnn import Convoultion_NN  # change to your local path for package instance
 import tempfile
 import shutil
 
-dataset_path = os.path.abspath(os.path.join(os.getcwd(), '..', 'imgs', 'test_imgs'))
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))  
+# or if script is nested deeper, adjust the number of '..'
 
-print("Using dataset path:", dataset_path)
+dataset_path = os.path.join(project_root, 'imgs', 'test_imgs')
 def test_model_initialization():
     """
     Test if the model initializes without error and builds the correct architecture.

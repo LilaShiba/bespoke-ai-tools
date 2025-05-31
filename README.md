@@ -1,12 +1,23 @@
-# 🎃 Sp00kyVectors: Vector Analysis wrapper for Python
+# Sp00kyVectors: Vector Analysis Wrapper for Python
 
-Welcome to **Sp00kyVectors**, the eerily intuitive Python class for **vector analysis**, **statistical computation**, and **visualizations** 🪄👻
+Welcome to **Sp00kyVectors**, the software powering your Tricorder. 🛸
 
-Whether you’re chasing spectral patterns or just need stats from dirty data, this library’s got your back (from beyond).
+These eerily intuitive Python modules work seamlessly as one toolkit for:
 
----
+- 🧲 **Data ingestion**
+- 🧼 **Cleaning**
+- 🧮 **Vector analysis**
+- 📊 **Statistical computation**
+- 🧠 **Bespoke neural net creation**
+- 🌌 **Visualizations** 🪄👻
 
-## 🧼 Examples
+Perfect for any away missions 🖖
+
+> 100% open-source and always summoning new engineers to help!
+
+## 🧼 Analysis Examples
+
+**on-the-go data manipulation** across space, time, and spreadsheets:
 
 | Before | After |
 |--------|-------|
@@ -14,9 +25,9 @@ Whether you’re chasing spectral patterns or just need stats from dirty data, t
 | ![Before Bin](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/beforebin.png) | ![After Bin](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/afterbin.png) |
 | ![Vector Projections](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output_add.png) | ![Normalize](https://github.com/LilaShiba/sp00kyvectors/raw/main/imgs/output.png) |
 
-## 🧹 Dirty Data? No Problem!
+## 🧹 Dirty Data
 #### Load without worry
-Easily load and align mismatched CSV files. This utility intelligently collects, normalizes, and organizes messy datasets — so you can focus on the analysis, not the cleanup. 🚀
+Easily load and align mismatched CSV files-**hello IoT**. This utility intelligently collects, normalizes, and organizes messy datasets — so you can focus on the analysis, not the cleanup. 🚀
 
 ``` Vector.load_folder(path) ``` loads a folder of CSV files with potentially mismatched or missing columns,  
 aligns all columns based on their headers, and combines them into a single clean DataFrame.  
@@ -36,7 +47,7 @@ This method returns a cleaned version of the DataFrame by performing the followi
 Finally, it returns the cleaned DataFrame ready for analysis. 🎯
 
 
-# 🎛️⚙️✨ Granular Control? No Problem!
+# 🎛️⚙️✨ Granular Control
 ## 🧠 Features
 
 - 🧮 **Vector Magic**:
